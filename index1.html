@@ -2,247 +2,191 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wachirawit </title>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ลองถ่ายแล By Wachirawit FIVE</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Tahoma', sans-serif;
+      font-family: sans-serif;
       background: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
-
-    /* Navbar */
-    nav {
-      background-color: #222222;
+    header {
+      background: #2c3e50;
       color: white;
-      padding: 10px 20px;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #34495e;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0.5rem 1rem;
     }
-    nav h1 {
-      margin: 0;
-      font-size: 20px;
+    nav input[type="text"] {
+      padding: 0.5rem;
+      width: 200px;
+      border: none;
+      border-radius: 4px;
     }
-    nav .menu {
-      display: flex;
-      gap: 15px;
+    nav select {
+      padding: 0.5rem;
+      border-radius: 4px;
     }
-    nav .menu a {
+    nav a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
+      margin-left: 1rem;
     }
-
-    /* Search Bar */
-    #search-bar {
-      margin: 20px auto;
-      text-align: center;
-    }
-    #search-input {
-      width: 300px;
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    /* Gallery */
     .gallery {
       display: flex;
       flex-wrap: wrap;
+      padding: 1rem;
       justify-content: center;
     }
-
-    .card {
+    .image-item {
       background: white;
+      margin: 1rem;
+      padding: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin: 15px;
-      padding: 10px;
-      width: 250px;
       text-align: center;
+      width: 200px;
     }
-    .card img {
+    .image-item img {
       width: 100%;
-      border-radius: 6px;
+      border-radius: 4px;
     }
-    .card h3 {
-      margin: 10px 0 5px;
-    }
-    .card p {
-      color: #666;
-    }
-    .card button {
-      padding: 8px 15px;
-      background: #007bff;
-      border: none;
+    .download-btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: #2980b9;
       color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .card button:hover {
-      background: #0056b3;
-    }
-
-    /* Cart */
-    #cart {
-      position: fixed;
-      top: 70px;
-      right: 20px;
-      background: white;
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 10px;
-      max-width: 250px;
-    }
-    #cart h3 {
-      margin-top: 0;
-    }
-    #cart-items {
-      font-size: 14px;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>ลองถ่ายแล By Wachirawit FIVE</h1>
+  </header>
 
-<!-- Navbar -->
-<nav>
-  <h1>📷 ลองถ่ายแล By Wachirawit FIVE</h1>
-  <div class="menu">
-    <a href="#">หน้าแรก</a>
-    <a href="#cart">ตะกร้า</a>
-    <a href="#">ติดต่อเรา</a>
-  </div>
-</nav>
+  <nav>
+    <div>
+      <input type="text" id="search" placeholder="🔍 ค้นหาชื่อภาพ...." onkeyup="filterImages()">
+      <select id="category" onchange="filterImages()">
+        <option value="all">ทุกหมวดหมู่</option>
+        <option value="ฟุตบอล">ฟุตบอล</option>
+        <option value="สัตว์">สัตว์</option>
+        <option value="เมือง">เมือง</option>
+      </select>
+    </div>
+    <div>
+      <a href="index.html">🏠หน้าแรก</a>
+    </div>
+  </nav>
 
-<!-- Search -->
-<div id="search-bar">
-  <input type="text" id="search-input" placeholder="ค้นหารูป เช่น ทะเล, ภูเขา...">
-</div>
+  <div class="gallery" id="gallery">
 
-<!-- Gallery -->
-<div class="gallery" id="gallery">
-  <!-- รูปจะถูกเพิ่มแบบ JS -->
-</div>
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="/3/images/IMG_4816.jpg" alt="ฟุตบอล">
+      <a href="/3/images/IMG_4816.jpg" download class="download-btn">ดาวน์โหลด</a>
+    </div>
 
-<!-- Cart -->
-<div id="cart">
-  <h3>🛒 ตะกร้าสินค้า</h3>
-  <div id="cart-items">ยังไม่มีรายการ</div>
-  <button id="checkout-btn" onclick="startCheckout()">ชำระเงิน</button>
-  
-</div>
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494805861_997085052535963_4648139685322767211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFpC1gmdEtafBP7GwrxEBXs9lQTYtlhVLv2VBNi2WFUu-iM5pR8wGKPhG0M4tSxOtdCf3U1uvlc8iqyNo2eNXXz&_nc_ohc=irxA7mSdwVMQ7kNvwHWpZwo&_nc_oc=AdlUUC88VsSdP-eL-3-QcEU2HLTBmnZEVzY3VTGZrXsnLR-kbMKc70u-72_aim5JqnQhV7FagGMuHHqVlf1ZZUJ5&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=00Ti4x2IDRTGbu425tCuYQ&oh=00_AfEIAPE8uHCtB0cK2MuJZwNQ7ZHUeq_6qDiLpdXygmr1_A&oe=681EB54D" alt="ฟุตบอล">
+      <a href="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494805861_997085052535963_4648139685322767211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFpC1gmdEtafBP7GwrxEBXs9lQTYtlhVLv2VBNi2WFUu-iM5pR8wGKPhG0M4tSxOtdCf3U1uvlc8iqyNo2eNXXz&_nc_ohc=irxA7mSdwVMQ7kNvwHWpZwo&_nc_oc=AdlUUC88VsSdP-eL-3-QcEU2HLTBmnZEVzY3VTGZrXsnLR-kbMKc70u-72_aim5JqnQhV7FagGMuHHqVlf1ZZUJ5&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=00Ti4x2IDRTGbu425tCuYQ&oh=00_AfEIAPE8uHCtB0cK2MuJZwNQ7ZHUeq_6qDiLpdXygmr1_A&oe=681EB54D" download class="download-btn">ดาวน์โหลด</a>
+    </div>
 
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494734599_997085409202594_6948186151196294054_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFoB2DjY6hsruTf3OcJ3ITls7EvI3GROVKzsS8jcZE5UuWxdNVT0Gb4OnYQllmIDERir5BsZsNk2t7-quledCRZ&_nc_ohc=IKPuvQmnhzwQ7kNvwHpEsCB&_nc_oc=Adn0BtbPz8t_cZa4lvahpL0oQMJpZSscy-_5pOoqp-XQlJCo0t_h5z67e01u52o6xUgt3fRB3BDYg2jlbuq3b__U&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=QGOGdK49F7tuqFouP9Ru6A&oh=00_AfHljh6leZkDYVZ3hGI736116ny6Iu6NqQcKuWdn-9av3w&oe=681EAE5F" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
 
-<script>
-  const images = [
-  { id: 1, title: 'ฟุตบอล', price: 10, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/491746921_986899240221211_8490248272435221601_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=w-3hhYzw3AAQ7kNvwFzxR4m&_nc_oc=AdnzBxra5vNa7JUwcR_Z8A55W8ufD7eongiodyYsYh3K2fsSx6Z7wTLD3NB3AAifnRp74Ywp4pDKnQI-_bsuV7Og&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=pQT8fCXLnwUzZ_1ZVBf8JA&oh=00_AfGWCjL3ZiByKM4wCoekKogHtI9jh0xrVLLwy5rD0tHcPg&oe=6816E1FB' },
-  { id: 2, title: 'ฟุตบอล', price: 10, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/491939030_986900206887781_2471909018297156416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=VWY5b2btN6YQ7kNvwE5O-2p&_nc_oc=Admi5POzoMCjEvwHpS8iu80E_573OYxoa0bdkAQ9dp4_fFW7saEfTEnj0Oz_qeZVi3RQm12LacsEIq4kMIHKnWxy&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=8pfuB2J0HAhJqA910wUIUQ&oh=00_AfF41gsV_ActpGMZU2v4PVD8enPYA4QXanqW57W7mPU3JA&oe=6816BD54' },
-  { id: 3, title: 'ฟุตบอล', price: 10, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/492004558_986895516888250_8251327384159337731_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=bCxbpC1YKQkQ7kNvwGHzeMR&_nc_oc=AdnwtgLSbUIe_GLz7ruWqNBC3RLxg6AFbjOWXAmUtdWhCq0_xe8y1Qd-uL4KmpsMpETrCG6ktMUt3pdFttw-isaM&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=xCyepO6Khkr4Zr9VmAsyoQ&oh=00_AfE2MrSmktgsvHY5gpAywyLaB1PXVkO3uDxDNkj6m3MY-A&oe=6816BE5D' },
-  { id: 4, title: 'ฟุตบอล', price: 10, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/491719659_986832163561252_9134562521804502327_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=omb6YOBCXp4Q7kNvwHJBzRj&_nc_oc=Adnz45TEadNk8AODqg_L15rO0Ze1m9jAYf3hX6yba08gYupgL5qC6P3rqM9MjtU8tBeeIuCclIl1YAqMLmmp-huP&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=joZytanmH2s0sE1Ndi5hNw&oh=00_AfGztDc1tIGvsLjRfKwYqQq7HTFi0tX-qoS6rKMfSDMQcA&oe=6816B678' },
-  { id: 5, title: 'ต้นไม้', price: 10, url: 'https://via.placeholder.com/250x150.png?text=Forest' },
-  { id: 6, title: 'น้ำตก', price: 10, url: 'https://via.placeholder.com/250x150.png?text=Waterfall' },
-  { id: 7, title: 'แม่น้ำ', price: 15, url: 'https://via.placeholder.com/250x150.png?text=River' },
-  { id: 8, title: 'ทะเลหมอก', price: 10, url: 'https://via.placeholder.com/250x150.png?text=Mist' },
-  { id: 9, title: 'หมู่บ้านชนบท', price: 95, url: 'https://via.placeholder.com/250x150.png?text=Village' },
-  { id: 10, title: 'ใบไม้เปลี่ยนสี', price: 125, url: 'https://via.placeholder.com/250x150.png?text=Autumn' },
-  { id: 11, title: 'ทะเลทราย', price: 105, url: 'https://via.placeholder.com/250x150.png?text=Desert' },
-  { id: 12, title: 'ทุ่งดอกไม้', price: 135, url: 'https://via.placeholder.com/250x150.png?text=Flowers' },
-  { id: 13, title: 'ทางช้างเผือก', price: 180, url: 'https://via.placeholder.com/250x150.png?text=Milky+Way' },
-  { id: 14, title: 'ภูเขาหิมะ', price: 160, url: 'https://via.placeholder.com/250x150.png?text=Snow+Mountain' },
-  { id: 15, title: 'ถนนกลางป่า', price: 100, url: 'https://via.placeholder.com/250x150.png?text=Road+in+Forest' },
-  { id: 16, title: 'บ้านไม้', price: 90, url: 'https://via.placeholder.com/250x150.png?text=Wooden+House' },
-  { id: 17, title: 'วัดไทย', price: 150, url: 'https://via.placeholder.com/250x150.png?text=Thai+Temple' },
-  { id: 18, title: 'แสงเหนือ', price: 200, url: 'https://via.placeholder.com/250x150.png?text=Northern+Lights' },
-  { id: 19, title: 'กลางทุ่งนา', price: 95, url: 'https://via.placeholder.com/250x150.png?text=Rice+Field' },
-  { id: 20, title: 'เรือกลางทะเล', price: 115, url: 'https://via.placeholder.com/250x150.png?text=Boat+at+Sea' }
-  
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495540336_997085629202572_6143879473637080438_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEYRW3fYgfYwyWYI22KCfu2uRFhDImmQeW5EWEMiaZB5ZVF0VIOCsdgUmauZsbWg9zaU4zCdw5AZ4FJq45Uh1zh&_nc_ohc=VzeD91Dx-U4Q7kNvwHNctCW&_nc_oc=AdmNX88FJXYyOXHRh6GTrcYX77z9RUWx824_rd8sgh_Gn8awiuTWYS2OZ60SUtw3soJ3d_o-jVqh75Fporw2eHYJ&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=KeICtpB2L549fpCssJdlmw&oh=00_AfGhbHzqy4-AKUVrIL04CNF6rdCcAaJV6B2xEYUKbRaY1A&oe=681ED97F" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
+
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495564385_997085929202542_1981539978977407636_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH6rMs9iYyIYxWL0S3v2Z-Amsqgl9utyi2ayqCX263KLc7xuYsjuQJFmc75I4n5LyRk2_ViFuW6mvNkoVaMdZv6&_nc_ohc=Xemb9hbgCgwQ7kNvwGLmfEI&_nc_oc=AdnDofsQUR4UJmtVZF0faLYW7B3oYy9j3YiS7mHhngqOcW6hZP4wN27-zUU0Bug0b-AjcnlD9Mc3puEEWXctaccs&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=MDk6_6Z03fZu_ICBVy0mPg&oh=00_AfGUFjxZdn-lr_9FdfAw7u9OdRMlzFuAtXA8UfZ4iQo11w&oe=681ED37C" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
+
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495539784_997085969202538_4296765954266739955_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGKxNlKoq2y6F52bPsn83lTIRlhXUIgVqEhGWFdQiBWoamwrz9TW7CE0cuuyPf12zxVhc9hpC2YFl2tgoKMOvez&_nc_ohc=CyJM3vNsrnkQ7kNvwFhUkkT&_nc_oc=Adn9bsVQNFrIt7BYFEng4L_D_1kQcZtqaXSKPxvBMPYTfnd77lE4bTOjjOS7bBUNH_Vnv9VODOngH5xvI4L7OdZ_&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=gMTEMgl4mbNq3uTYIdfWTg&oh=00_AfEvy45VnRSevLuSXR6VvQqGFa8yjJFq3Ti2T9EGJMYm1A&oe=681EC43E" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
     
-  ];
-  
- 
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494785717_997086042535864_302940537874889641_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGjQuo-0ZNggtXTVg8LAquJ-FkO8U4rkUf4WQ7xTiuRR55zJMhTYZy9jhtFU4B5bdlQN71Yk_0RpT7L4KUaYvNW&_nc_ohc=ksp9bIZLiHQQ7kNvwHWLXLB&_nc_oc=AdnPOwdVrudXfbh58fcR_vKb6rfjgoucgl4L5mWZVOJoknLt68Zy1gC_iOfj4DUGhH_uMPh7bO_NdL0_huggbMxW&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=pLWkCSo3rR8QEZfy9g_LbA&oh=00_AfGH2p3dWl2V8u-ykbKcAv1Rn-JsNX6vf3y7l6rrhPoMyw&oe=681EB385" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
 
-  const gallery = document.getElementById('gallery');
-  const cartItems = document.getElementById('cart-items');
-  let cart = [];
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495566734_997086152535853_3985706780743704030_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG2sdi0kNxKQQjYBNvs2-M_udMz9bix63K50zP1uLHrclaFsvl7fuO5aGVDCbI13xragabSEWrJNquug2_P3aGW&_nc_ohc=QLE8EmdSH20Q7kNvwHeBIUe&_nc_oc=Adkzt0YiK-nZA_4YakSSJSgbROmExTwaclCEGcR5tfvWPKNIdUEa-FwGQn6HRzShTJLNf-zTsOLuidjhm0fryts0&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=QwGkqsE0q_B3m-BRfXzT7w&oh=00_AfEnhK4iRPTh4FxIXVSHVRMoGgPQ-3zg4aUPamBG79z4ZA&oe=681EDD0F" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
 
-  function renderImages(filter = '') {
-    gallery.innerHTML = '';
-    const filtered = images.filter(img => img.title.includes(filter));
-    filtered.forEach(img => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <img src="${img.url}" alt="${img.title}">
-        <h3>${img.title}</h3>
-        <p>ราคา: ${img.price} บาท</p>
-        <button onclick="addToCart(${img.id})">เพิ่มลงตะกร้า</button>
-      `;
-      gallery.appendChild(card);
-    });
-  }
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494580608_997086219202513_494625864564082215_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFP4cUNszp0rd4rYLsuvDxBwugexNc7MqvC6B7E1zsyq38zIn-jlt5PTN_Uqqi-0fJaaycEwB2gFOr0Uri_Gbtj&_nc_ohc=N58KUywuNgQQ7kNvwHYbO58&_nc_oc=AdkC9RTXUys09ZEqltSmtH3LmDIc5IQxq8z5IlwQTk4-qMaoZSlb-Xl26SD10CV6OHGLRjVAZ--TGuqqefb_5ZbK&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=xP4XoXA2VY4N2-3TjdzCuw&oh=00_AfF7M2m1XSsHPTW-Jx43YnVyN6a9nRtH0z4JRyiMo1roMw&oe=681EAE46" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
 
-  function addToCart(id) {
-    const item = images.find(img => img.id === id);
-    cart.push(item);
-    updateCart();
-  }
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495563793_997086352535833_2868305659861456983_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHkfDxTZhzzTgqRydSVS6pLw2wDU-Hu5gfDbANT4e7mB03IlM0yGOp1tzdNhaF3uHJ4xGJ8s8fTR4vByq6la2uL&_nc_ohc=1odPLLUcKcAQ7kNvwEJHphU&_nc_oc=Adl6sWKkG3WVIiEnKwGA_ZSSAyyD9mYS1HdrhXNLkYjCrSydj_ly-aLTFnNu1bqs2Kp7SGOtY8tRiQD4LaRYzrkK&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=6dfaZRAn7_JPe5xerV_d6Q&oh=00_AfHsoxlqDHsYAoG-4_yuuWaF09RnY_Nr2WYi-GIGR3abwg&oe=681EC115" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
 
-  function updateCart() {
-    if (cart.length === 0) {
-      cartItems.innerHTML = 'ยังไม่มีรายการ';
-      return;
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495563016_997086369202498_1022094025540218608_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeErzurxyUB5ZYfklbIGoBTte26joSRwrO57bqOhJHCs7k-wlpqWu0Fievlc2nleFvL4gm6rxU9Y1T1YEP1J8XKR&_nc_ohc=jnjlLx9rP-EQ7kNvwH0vhMK&_nc_oc=AdmDs-WAheklso_ZVLJnBFbsM_K1alazuUYIPeDW2uZNorbPBPmfNdDfkNf-TlmKLCZ4cbmICu5dGc66vl4S_j1u&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=CrIz08vpfP46GisehxBU5Q&oh=00_AfHGyt-CUyDTmkOEfyGUDq8G5xGXEwTaY-7uoN8gdOaP2Q&oe=681ED08A" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
+
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495161726_997086492535819_2176744702639962401_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEY8j5g7k1_1SqZZE39RkOgGjymP91k1AoaPKY_3WTUCsjjcquQ0dy6u53ShYW8GyVIwhFdyT5anNmb2pGhbLb0&_nc_ohc=dUtPH7jQf2oQ7kNvwEvTJMF&_nc_oc=Adl4JSosokJlWHMtQHiOSqAUguSsm86aQwR4KZH9j44GDHS0no5s0SCXdAIecoMQCyk6jRs2px3_hLu4rPTGsF1-&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=pijhD8z3f9DzrvcIJ1r7hQ&oh=00_AfG5ePirSMrfJYZogbfKzbOp-5JiI8CELiU_55RIHaqBBA&oe=681EB450" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
+
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495579646_997086522535816_7132121384368340734_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeErA5xb1JSkbAtBJgRyGVNa4vaGcNrHFC_i9oZw2scULxRj1KVIVQVrph_Sg_BurRG7MMV7yqSXkGwbWVtJuzoJ&_nc_ohc=-RVlxkFhVVEQ7kNvwG1vu_x&_nc_oc=Adljm41knuCM69xHuRfN7IHSImmnN-IDpgbD6FCz7gzcpwxiCo5SlUAZ36JuVfrEks-ixpzwC50nFLv6DIERj88D&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=lQhL30U7JxZaZdtM6HkqXg&oh=00_AfE033aygZgii1WgMI64ZtL-OBG2tkWjnJYt7HLEAk_lrw&oe=681ED1A4" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
+
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494580630_997086745869127_1574286272974417713_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGXnUjaOyJ5obvt93rZcz7wS-CKDkupdUBL4IoOS6l1QEK0zzhf5kFEkMTLHhTbjpfAancf0AOunvyJsekAXaiU&_nc_ohc=XcOis7AxxpgQ7kNvwEjPNE1&_nc_oc=AdnQUXXGSVXNugM70XM4VlAhDDl0iRH7ZvcRpLovQKNiGv-6oeduPhuIBKB_mBElnLRCtcFClVop4nniS5elFSCv&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=DjLmqLMUtygJlqs9ICtyMg&oh=00_AfHQUanazYQXy6LFEsR7i1CV4zNziEgZyqwBf36D3YzVew&oe=681EB991" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
+
+    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
+      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494593019_997086762535792_367560347956703211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdmCuHrEWgjJIO1yv_vWe52J5bnVhtNxjYnludWG03GHU_OdFCwXJTS9Or-6VutKXQY2uF00LaN_IRGwcz8iBL&_nc_ohc=bdi2064OJDQQ7kNvwFgjev3&_nc_oc=AdmhF_OJD3yf1HkwsjX6KBMfbzpzgnbZE6LWTI061GsKWHLWToj_n_gb-u2_f7n6KB8nEch34daCkyxxid6IhPTZ&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=p68ivtv7Zq9wXkk29lnfGw&oh=00_AfGR1Uqh-vctpFCk2x7sh0d_-AxvHKDJwpUG9vaHvMBNiQ&oe=681EC545" alt="ฟุตบอล">
+      <a href="" download class="download-btn">ดาวน์โหลด</a>
+    </div>
+
+  </div>
+
+  <script>
+    function filterImages() {
+      const search = document.getElementById('search').value.toLowerCase();
+      const category = document.getElementById('category').value;
+      const images = document.querySelectorAll('.image-item');
+
+      images.forEach(img => {
+        const title = img.getAttribute('data-title').toLowerCase();
+        const imgCategory = img.getAttribute('data-category');
+        const matchSearch = title.includes(search);
+        const matchCategory = (category === 'all' || category === imgCategory);
+
+        if (matchSearch && matchCategory) {
+          img.style.display = 'block';
+        } else {
+          img.style.display = 'none';
+        }
+      });
     }
-    let html = '';
-    let total = 0;
-    cart.forEach((item, index) => {
-      html += `<div>${index + 1}. ${item.title} - ${item.price} บาท</div>`;
-      total += item.price;
-    });
-    html += `<hr><strong>รวม: ${total} บาท</strong>`;
-    cartItems.innerHTML = html;
-  }
-
-  // ค้นหา
-  document.getElementById('search-input').addEventListener('input', (e) => {
-    const filter = e.target.value.trim();
-    renderImages(filter);
-  });
-
-  // เริ่มต้นแสดงทั้งหมด
-  renderImages();
-  function uploadImage() {
-  const fileInput = document.getElementById('upload-file');
-  const title = document.getElementById('upload-title').value.trim();
-  const price = parseInt(document.getElementById('upload-price').value);
-  const status = document.getElementById('upload-status');
-
-  if (!fileInput.files[0] || !title || !price) {
-    alert("กรุณากรอกข้อมูลให้ครบ");
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const newImg = {
-      id: images.length + 1,
-      title: title,
-      price: price,
-      url: e.target.result // base64 image data
-    };
-    images.push(newImg);
-    renderImages(document.getElementById('search-input').value.trim()); // แสดงภาพทันที
-    status.textContent = "✅ อัปโหลดสำเร็จ!";
-    fileInput.value = '';
-    document.getElementById('upload-title').value = '';
-    document.getElementById('upload-price').value = '';
-  };
-  reader.readAsDataURL(fileInput.files[0]);
-}
-
-</script>
-
-
+  </script>
 </body>
 </html>
