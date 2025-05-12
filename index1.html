@@ -1,211 +1,301 @@
 <!DOCTYPE html>
 <html lang="th">
+  
 <head>
+  
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ลองถ่ายแล By Wachirawit FIVE</title>
+  <title>ลองถ่ายแล By Wachirawit FIVE </title>
+  
   <style>
-    body {
-      font-family: sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
+    
+    body { font-family: sans-serif; background: #8fdaf1; margin: 0; padding: 20px; }
+    header { text-align: center; padding: 10px; background: #222; color: white; }
+    #gallery, #cart-items { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .card { background: white; padding: 10px; border-radius: 5px; width: 200px; box-shadow: 0 2px 5px #140cfb; text-align: center; }
+    .card img { width: 100%; height: auto; border-radius: 5px; }
+    input, button { padding: 5px; margin: 5px 0; }
+    #cart { background: rgb(3, 255, 83); padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px #fd5102; max-width: 400px; }
     nav {
-      background: #34495e;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 1rem;
+
+
+      
+    background-color: #222;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  nav h1 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+
+  .menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.1em;
+  }
+
+  .menu a:hover {
+    text-decoration: underline;
+    color: #00a2ff; /* สีทองเมื่อ hover */
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    nav input[type="text"] {
-      padding: 0.5rem;
-      width: 200px;
-      border: none;
-      border-radius: 4px;
+    .menu a {
+      margin: 10px 0;
     }
-    nav select {
-      padding: 0.5rem;
-      border-radius: 4px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1rem;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 1rem;
-      justify-content: center;
-    }
-    .image-item {
-      background: white;
-      margin: 1rem;
-      padding: 1rem;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      text-align: center;
-      width: 200px;
-    }
-    .image-item img {
-      width: 100%;
-      border-radius: 4px;
-    }
-    .download-btn {
-      display: inline-block;
-      margin-top: 0.5rem;
-      background: #2980b9;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      text-decoration: none;
-    }
+  }
+  .download-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #45a049;
+}
+
+  
   </style>
 </head>
 <body>
-  <header>
-    <h1>ลองถ่ายแล By Wachirawit FIVE</h1>
-  </header>
+  
 
-  <nav>
-    <div>
-      <input type="text" id="search" placeholder="🔍 ค้นหาชื่อภาพ...." onkeyup="filterImages()">
-      <select id="category" onchange="filterImages()">
-        <option value="all">ทุกหมวดหมู่</option>
-        <option value="ฟุตบอล">ฟุตบอล</option>
-        <option value="สัตว์">สัตว์</option>
-        <option value="เมือง">เมือง</option>
-      </select>
-    </div>
-    <div>
-      <a href="index.html">🏠หน้าแรก</a>
-    </div>
-  </nav>
-
-  <div class="gallery" id="gallery">
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="/วชิรวิชญ์ 055/images/IMG_4835.jpg" alt="ฟุตบอล">
-      <a href="/วชิรวิชญ์ 055/images/IMG_4835.jpg" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494805861_997085052535963_4648139685322767211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFpC1gmdEtafBP7GwrxEBXs9lQTYtlhVLv2VBNi2WFUu-iM5pR8wGKPhG0M4tSxOtdCf3U1uvlc8iqyNo2eNXXz&_nc_ohc=irxA7mSdwVMQ7kNvwHWpZwo&_nc_oc=AdlUUC88VsSdP-eL-3-QcEU2HLTBmnZEVzY3VTGZrXsnLR-kbMKc70u-72_aim5JqnQhV7FagGMuHHqVlf1ZZUJ5&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=00Ti4x2IDRTGbu425tCuYQ&oh=00_AfEIAPE8uHCtB0cK2MuJZwNQ7ZHUeq_6qDiLpdXygmr1_A&oe=681EB54D" alt="ฟุตบอล">
-      <a href="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494805861_997085052535963_4648139685322767211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFpC1gmdEtafBP7GwrxEBXs9lQTYtlhVLv2VBNi2WFUu-iM5pR8wGKPhG0M4tSxOtdCf3U1uvlc8iqyNo2eNXXz&_nc_ohc=irxA7mSdwVMQ7kNvwHWpZwo&_nc_oc=AdlUUC88VsSdP-eL-3-QcEU2HLTBmnZEVzY3VTGZrXsnLR-kbMKc70u-72_aim5JqnQhV7FagGMuHHqVlf1ZZUJ5&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=00Ti4x2IDRTGbu425tCuYQ&oh=00_AfEIAPE8uHCtB0cK2MuJZwNQ7ZHUeq_6qDiLpdXygmr1_A&oe=681EB54D" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494734599_997085409202594_6948186151196294054_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFoB2DjY6hsruTf3OcJ3ITls7EvI3GROVKzsS8jcZE5UuWxdNVT0Gb4OnYQllmIDERir5BsZsNk2t7-quledCRZ&_nc_ohc=IKPuvQmnhzwQ7kNvwHpEsCB&_nc_oc=Adn0BtbPz8t_cZa4lvahpL0oQMJpZSscy-_5pOoqp-XQlJCo0t_h5z67e01u52o6xUgt3fRB3BDYg2jlbuq3b__U&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=QGOGdK49F7tuqFouP9Ru6A&oh=00_AfHljh6leZkDYVZ3hGI736116ny6Iu6NqQcKuWdn-9av3w&oe=681EAE5F" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495540336_997085629202572_6143879473637080438_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEYRW3fYgfYwyWYI22KCfu2uRFhDImmQeW5EWEMiaZB5ZVF0VIOCsdgUmauZsbWg9zaU4zCdw5AZ4FJq45Uh1zh&_nc_ohc=VzeD91Dx-U4Q7kNvwHNctCW&_nc_oc=AdmNX88FJXYyOXHRh6GTrcYX77z9RUWx824_rd8sgh_Gn8awiuTWYS2OZ60SUtw3soJ3d_o-jVqh75Fporw2eHYJ&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=KeICtpB2L549fpCssJdlmw&oh=00_AfGhbHzqy4-AKUVrIL04CNF6rdCcAaJV6B2xEYUKbRaY1A&oe=681ED97F" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495564385_997085929202542_1981539978977407636_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH6rMs9iYyIYxWL0S3v2Z-Amsqgl9utyi2ayqCX263KLc7xuYsjuQJFmc75I4n5LyRk2_ViFuW6mvNkoVaMdZv6&_nc_ohc=Xemb9hbgCgwQ7kNvwGLmfEI&_nc_oc=AdnDofsQUR4UJmtVZF0faLYW7B3oYy9j3YiS7mHhngqOcW6hZP4wN27-zUU0Bug0b-AjcnlD9Mc3puEEWXctaccs&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=MDk6_6Z03fZu_ICBVy0mPg&oh=00_AfGUFjxZdn-lr_9FdfAw7u9OdRMlzFuAtXA8UfZ4iQo11w&oe=681ED37C" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495539784_997085969202538_4296765954266739955_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGKxNlKoq2y6F52bPsn83lTIRlhXUIgVqEhGWFdQiBWoamwrz9TW7CE0cuuyPf12zxVhc9hpC2YFl2tgoKMOvez&_nc_ohc=CyJM3vNsrnkQ7kNvwFhUkkT&_nc_oc=Adn9bsVQNFrIt7BYFEng4L_D_1kQcZtqaXSKPxvBMPYTfnd77lE4bTOjjOS7bBUNH_Vnv9VODOngH5xvI4L7OdZ_&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=gMTEMgl4mbNq3uTYIdfWTg&oh=00_AfEvy45VnRSevLuSXR6VvQqGFa8yjJFq3Ti2T9EGJMYm1A&oe=681EC43E" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
+<header>
+  <h1>📸ลองถ่ายแล By Wachirawit FIVE </h1>
+  <input id="search-input" placeholder="🔍 ค้นหาชื่อภาพ...." />
+</header>
+<nav>
+  <h1></h1>
+  <div class="menu">
     
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494785717_997086042535864_302940537874889641_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGjQuo-0ZNggtXTVg8LAquJ-FkO8U4rkUf4WQ7xTiuRR55zJMhTYZy9jhtFU4B5bdlQN71Yk_0RpT7L4KUaYvNW&_nc_ohc=ksp9bIZLiHQQ7kNvwHWLXLB&_nc_oc=AdnPOwdVrudXfbh58fcR_vKb6rfjgoucgl4L5mWZVOJoknLt68Zy1gC_iOfj4DUGhH_uMPh7bO_NdL0_huggbMxW&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=pLWkCSo3rR8QEZfy9g_LbA&oh=00_AfGH2p3dWl2V8u-ykbKcAv1Rn-JsNX6vf3y7l6rrhPoMyw&oe=681EB385" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
+    <a href="index.html">🏠หน้าแรก</a>
+    
 
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495566734_997086152535853_3985706780743704030_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG2sdi0kNxKQQjYBNvs2-M_udMz9bix63K50zP1uLHrclaFsvl7fuO5aGVDCbI13xragabSEWrJNquug2_P3aGW&_nc_ohc=QLE8EmdSH20Q7kNvwHeBIUe&_nc_oc=Adkzt0YiK-nZA_4YakSSJSgbROmExTwaclCEGcR5tfvWPKNIdUEa-FwGQn6HRzShTJLNf-zTsOLuidjhm0fryts0&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=QwGkqsE0q_B3m-BRfXzT7w&oh=00_AfEnhK4iRPTh4FxIXVSHVRMoGgPQ-3zg4aUPamBG79z4ZA&oe=681EDD0F" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
+    <a href="https://www.facebook.com/RISESTARPTTH?locale=th_TH" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="40">
+    </a>
+    
 
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494580608_997086219202513_494625864564082215_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFP4cUNszp0rd4rYLsuvDxBwugexNc7MqvC6B7E1zsyq38zIn-jlt5PTN_Uqqi-0fJaaycEwB2gFOr0Uri_Gbtj&_nc_ohc=N58KUywuNgQQ7kNvwHYbO58&_nc_oc=AdkC9RTXUys09ZEqltSmtH3LmDIc5IQxq8z5IlwQTk4-qMaoZSlb-Xl26SD10CV6OHGLRjVAZ--TGuqqefb_5ZbK&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=xP4XoXA2VY4N2-3TjdzCuw&oh=00_AfF7M2m1XSsHPTW-Jx43YnVyN6a9nRtH0z4JRyiMo1roMw&oe=681EAE46" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495563793_997086352535833_2868305659861456983_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHkfDxTZhzzTgqRydSVS6pLw2wDU-Hu5gfDbANT4e7mB03IlM0yGOp1tzdNhaF3uHJ4xGJ8s8fTR4vByq6la2uL&_nc_ohc=1odPLLUcKcAQ7kNvwEJHphU&_nc_oc=Adl6sWKkG3WVIiEnKwGA_ZSSAyyD9mYS1HdrhXNLkYjCrSydj_ly-aLTFnNu1bqs2Kp7SGOtY8tRiQD4LaRYzrkK&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=6dfaZRAn7_JPe5xerV_d6Q&oh=00_AfHsoxlqDHsYAoG-4_yuuWaF09RnY_Nr2WYi-GIGR3abwg&oe=681EC115" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495563016_997086369202498_1022094025540218608_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeErzurxyUB5ZYfklbIGoBTte26joSRwrO57bqOhJHCs7k-wlpqWu0Fievlc2nleFvL4gm6rxU9Y1T1YEP1J8XKR&_nc_ohc=jnjlLx9rP-EQ7kNvwH0vhMK&_nc_oc=AdmDs-WAheklso_ZVLJnBFbsM_K1alazuUYIPeDW2uZNorbPBPmfNdDfkNf-TlmKLCZ4cbmICu5dGc66vl4S_j1u&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=CrIz08vpfP46GisehxBU5Q&oh=00_AfHGyt-CUyDTmkOEfyGUDq8G5xGXEwTaY-7uoN8gdOaP2Q&oe=681ED08A" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495161726_997086492535819_2176744702639962401_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEY8j5g7k1_1SqZZE39RkOgGjymP91k1AoaPKY_3WTUCsjjcquQ0dy6u53ShYW8GyVIwhFdyT5anNmb2pGhbLb0&_nc_ohc=dUtPH7jQf2oQ7kNvwEvTJMF&_nc_oc=Adl4JSosokJlWHMtQHiOSqAUguSsm86aQwR4KZH9j44GDHS0no5s0SCXdAIecoMQCyk6jRs2px3_hLu4rPTGsF1-&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=pijhD8z3f9DzrvcIJ1r7hQ&oh=00_AfG5ePirSMrfJYZogbfKzbOp-5JiI8CELiU_55RIHaqBBA&oe=681EB450" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495579646_997086522535816_7132121384368340734_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeErA5xb1JSkbAtBJgRyGVNa4vaGcNrHFC_i9oZw2scULxRj1KVIVQVrph_Sg_BurRG7MMV7yqSXkGwbWVtJuzoJ&_nc_ohc=-RVlxkFhVVEQ7kNvwG1vu_x&_nc_oc=Adljm41knuCM69xHuRfN7IHSImmnN-IDpgbD6FCz7gzcpwxiCo5SlUAZ36JuVfrEks-ixpzwC50nFLv6DIERj88D&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=lQhL30U7JxZaZdtM6HkqXg&oh=00_AfE033aygZgii1WgMI64ZtL-OBG2tkWjnJYt7HLEAk_lrw&oe=681ED1A4" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494580630_997086745869127_1574286272974417713_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGXnUjaOyJ5obvt93rZcz7wS-CKDkupdUBL4IoOS6l1QEK0zzhf5kFEkMTLHhTbjpfAancf0AOunvyJsekAXaiU&_nc_ohc=XcOis7AxxpgQ7kNvwEjPNE1&_nc_oc=AdnQUXXGSVXNugM70XM4VlAhDDl0iRH7ZvcRpLovQKNiGv-6oeduPhuIBKB_mBElnLRCtcFClVop4nniS5elFSCv&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=DjLmqLMUtygJlqs9ICtyMg&oh=00_AfHQUanazYQXy6LFEsR7i1CV4zNziEgZyqwBf36D3YzVew&oe=681EB991" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494593019_997086762535792_367560347956703211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdmCuHrEWgjJIO1yv_vWe52J5bnVhtNxjYnludWG03GHU_OdFCwXJTS9Or-6VutKXQY2uF00LaN_IRGwcz8iBL&_nc_ohc=bdi2064OJDQQ7kNvwFgjev3&_nc_oc=AdmhF_OJD3yf1HkwsjX6KBMfbzpzgnbZE6LWTI061GsKWHLWToj_n_gb-u2_f7n6KB8nEch34daCkyxxid6IhPTZ&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=p68ivtv7Zq9wXkk29lnfGw&oh=00_AfGR1Uqh-vctpFCk2x7sh0d_-AxvHKDJwpUG9vaHvMBNiQ&oe=681EC545" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="/วชิรวิชญ์ 055/images/IMG_4816.jpg" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="/วชิรวิชญ์ 055/images/IMG_4817.jpg" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="/วชิรวิชญ์ 055/images/IMG_4819.jpg" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
-
-    <div class="image-item" data-title="ฟุตบอล" data-category="ฟุตบอล">
-      <img src="/วชิรวิชญ์ 055/images/IMG_4821.jpg" alt="ฟุตบอล">
-      <a href="" download class="download-btn">ดาวน์โหลด</a>
-    </div>
+    <a href="Contact .html">📞ติดต่อเรา</a>
   </div>
+</nav>
+<h2>📷 ภาพถ่ายทั้งหมด</h2>
+<div id="gallery"></div>
 
-  <script>
-    function filterImages() {
-      const search = document.getElementById('search').value.toLowerCase();
-      const category = document.getElementById('category').value;
-      const images = document.querySelectorAll('.image-item');
+<h2>🛒 ตะกร้าสินค้า</h2>
+<div id="cart">
+  <div id="cart-items">คุณยังไม่เลือกรายการ</div>
+  <button onclick="checkout()">ยืนยันการเลือก </button>
+</div>
 
-      images.forEach(img => {
-        const title = img.getAttribute('data-title').toLowerCase();
-        const imgCategory = img.getAttribute('data-category');
-        const matchSearch = title.includes(search);
-        const matchCategory = (category === 'all' || category === imgCategory);
 
-        if (matchSearch && matchCategory) {
-          img.style.display = 'block';
-        } else {
-          img.style.display = 'none';
-        }
-      });
-    }
-  </script>
+
+<script>
+  
+  
+const images = [
+  
+  
+  { id: 1, title: 'ไพรวัลย์ ฟุตซอล คัพ', price: 1100, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/493100030_989902093254259_204427722427919293_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=qrfnCRqr1gQQ7kNvwGShzm6&_nc_oc=Adk8Q2yPHQG2tOjAHmrV46Fojry7phQlQ9S-jEGeHxRfdDjaL6Kst_aO3IamJHppwYSEnwwXARU2RPDlQrL15Lfl&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=UB8_HrdylFH6O6Mze17twQ&oh=00_AfF-pzeI9RU7WiCwPaN14-eZY_6EbHpu0GTWApwZUkOd8Q&oe=6817C609' },
+  { id: 2, title: 'ไพรวัลย์ ฟุตซอล คัพ', price: 1150, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/492880375_989902219920913_4881279175657745685_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=X9o-8bLU8gkQ7kNvwFcaj2D&_nc_oc=AdkADtJAFKJ-oVGj2l0RKSbBwOnjwIRqpE75LwPUVo1CWzjXE4JjmH4DH49X4du3ZE4-S6A0M8oUUD_pxwCpMYEd&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=7Tf3YSg8NKmxq-z64DPUFA&oh=00_AfEYcxkMp5crqw4bbTwmaACrMqOnfQKHIn6gdRnCNnnwJA&oe=6817D565' },
+  { id: 3, title: 'ไพรวัลย์ ฟุตซอล คัพ', price: 1120, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/492886540_989902803254188_9083295680088158332_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=EbB4o9AmgCYQ7kNvwHSqdt1&_nc_oc=AdnqiBcQZv9TWM-LVCA8E_zhgKnwA7tVuD6zPAon7f0QjfPAT0KrJ23iwJC__TsTY9IxEuleJvo4G6XS3fqj7h4b&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=WQffk4UO0Zwz0HtE9As0wQ&oh=00_AfENBhS4rTWxvmAib9DgZAD1k-QFAfvege1XYnZeQS8Ing&oe=6817D8AB' },
+  { id: 4, title: 'ไพรวัลย์ ฟุตซอล คัพ', price: 1140, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/492705459_989902709920864_8419615160102256282_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UXVPL9c9aHcQ7kNvwHYSZAa&_nc_oc=Adk-1VYQ12WulmAY_SEnYhSM3nuf8iFCeFFCR_gw1VQfUwRhFxwtbNlpLqNo_jrxuC2mPrHK0nL7597yTgdN1MSf&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=kcFFsKkoZ_k9VLcZZBBJ8w&oh=00_AfE1wwb135seHyoQFCDL0FmcRDoFl4xZAWOIFu4UlZZwAA&oe=6817B16B' },
+  { id: 5, title: 'ไพรวัลย์ ฟุตซอล คัพ', price: 9101, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/493001813_989902973254171_6819861123122022836_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Sn9UD8lcZMoQ7kNvwHJYZUP&_nc_oc=AdnpNEUDF0YSYajpzLyfJCC0uWsQ9UYI1yHJnRNCb67t6czzcI-UHLpMrLeNttKKbJEyyKd1sZC4CbvZ6H4ILbRU&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=aRpTT5Tql_Q3PZUKeJhkZw&oh=00_AfG-nfzL2IEL18v3MvqbLuwjO57rowM45uy0eaI0b-io4Q&oe=6817D2A6' },
+  { id: 6, title: 'ไพรวัลย์ ฟุตซอล คัพ', price: 1210, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/493265049_989902673254201_7212011585681135027_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=_sauyqXl7kUQ7kNvwGupUsN&_nc_oc=AdkuIytzocY85I3iUeccKFfBX1Npr8e5kWg7Ty4R0fVShbxZcuNFCPsnMWxfmR8nGhzy9ninGYtJCagydEqUBCzM&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=tQZO-AzFTB95reoT0zWfSA&oh=00_AfHR-gQ-yTFD1iU_nSTcMqH33adUDWFMEgLSixWVZzoHbg&oe=6817B265' },
+  { id: 7, title: 'ไพรวัลย์ ฟุตซอล คัพ', price: 1315, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/493015437_989902893254179_8342526637402632856_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=jY1C8EYvmBEQ7kNvwHuUkfb&_nc_oc=Adn2PHjXq_38mVgx9eE6BC6mFkkaDc25XYQHyCGR4P5r8dRxKoJU02S2tLcIRSCxAYcXDm8FVV1Ntlfsh7q0N56U&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=XAIxqFKDW3gYCl7MPeJP-g&oh=00_AfFCcMPeXDA_FfNZuhK9rAyZk1r3CbzNjtbdpiEW65yeoA&oe=6817DE18' },
+  { id: 8, title: 'ฟุตบอล พี่จักร คัพ', price: 1301, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494805861_997085052535963_4648139685322767211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFpC1gmdEtafBP7GwrxEBXs9lQTYtlhVLv2VBNi2WFUu-iM5pR8wGKPhG0M4tSxOtdCf3U1uvlc8iqyNo2eNXXz&_nc_ohc=PAgLsOnlapwQ7kNvwEqSdgU&_nc_oc=AdntFeqYyRPDj0Ker0R1hISIZy4PVKj9ZSqur3qYQnwiQL1pMSyOPIpzHyQ8CDUzMnZvUYI93F04fJhw82SED3B5&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=YUqIgQRNIU2nXYsHd-GfQw&oh=00_AfL8TtEVis7btHjGCTzGJIT7susnTjRu5IgRy_cLs7p-5w&oe=6822718D' },
+  { id: 9, title: 'ฟุตบอล พี่จักร คัพ', price: 9521, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494718722_997085165869285_3278855126707316417_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE7QsnhuK8yqPOpvP45YNTNRFVqjsE1nTdEVWqOwTWdN3oE_6gYbhjEQwWmMnFsfrqlYhEUJNn-VO8RoFbaASKF&_nc_ohc=TM880jQ6VlMQ7kNvwFyhI4o&_nc_oc=AdmYFriSReQSre_9tCfhW6YJLi-DHbb5cQZ1NDWsLV_xAInnHFWoJ-xyl-IWoMvAXUTk_F0n58LWHPm69_WU_Uz7&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=I4w-22OiR-9_qH7ode6LXA&oh=00_AfKtolK7oAZJUztw3VE9I6MHZC12jQj5s3mbj47m_rewxg&oe=682270E9' },
+  { id: 10, title: 'ฟุตบอล พี่จักร คัพ', price: 1255, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495373841_997085522535916_171645935813813673_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHuLcKaRZ49BYatvHW4kIeBJgWB52NqgxYmBYHnY2qDFiSaFpKJKXP8b9ZLph2TiX83AbNJcqmTYoIlfJz-l9Rj&_nc_ohc=uO4EgydxSIUQ7kNvwF1ae8K&_nc_oc=Admsm2zJzvzAWnzAtGESR9PSLZHLYG6Pqac6HY9J240E9zwmYXB4fbaSP905M4yq8bNSx0lm1Qdxga6Sa6XuY2qw&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=OnpSmv0UC6hauQhbJHBGJw&oh=00_AfLfJ40FD0OEjv0gSZbV4AqabBkRqIiiVz5ktRdFATPlbA&oe=68226618' },
+  { id: 11, title: 'ฟุตบอล พี่จักร คัพ', price: 1045, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495540336_997085629202572_6143879473637080438_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEYRW3fYgfYwyWYI22KCfu2uRFhDImmQeW5EWEMiaZB5ZVF0VIOCsdgUmauZsbWg9zaU4zCdw5AZ4FJq45Uh1zh&_nc_ohc=sHAUSF4mrVMQ7kNvwFqhMBj&_nc_oc=AdmPTyB1BajHGZRfeS3xLMyFklWado3IaR5NwRSUV_3ndOWGn0UsggTtWTtSLDnLyrAkkutfygTrZOMx7lkd0XN-&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=I-58JL-2TuyHrebsAw9TXA&oh=00_AfJ-UrENRZAgLwzcdC69oGY-8dkB5jDwrUSyTjqzZqJFQQ&oe=68225D7F' },
+  { id: 12, title: 'ฟุตบอล พี่จักร คัพ', price: 1365, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495564385_997085929202542_1981539978977407636_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH6rMs9iYyIYxWL0S3v2Z-Amsqgl9utyi2ayqCX263KLc7xuYsjuQJFmc75I4n5LyRk2_ViFuW6mvNkoVaMdZv6&_nc_ohc=vFfj9CHI2JcQ7kNvwGcB-d4&_nc_oc=Adn6Bf2DsK0R4l0XaRBcNfWl_-DsEZc8UzxfjTqxGiX2_JpVkn8VOQCZQUZ6KiyMGYUmF4ZMqsYcO1_0Xz3K8xQE&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=IE2SThxo1_-usI75OMUgLg&oh=00_AfK2kCBkVmyHddiMw9Tf1FzNjhug0jgDOwpCum1DR6JxlA&oe=6822577C' },
+  { id: 13, title: 'ฟุตบอล พี่จักร คัพ', price: 1580, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495539784_997085969202538_4296765954266739955_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGKxNlKoq2y6F52bPsn83lTIRlhXUIgVqEhGWFdQiBWoamwrz9TW7CE0cuuyPf12zxVhc9hpC2YFl2tgoKMOvez&_nc_ohc=XfOZaw6FAPEQ7kNvwHBBOQm&_nc_oc=AdnAYlbmFpp9e583Q6s_cdl8vJX56-ZF68qE2VlmHD4uJTUrBsrirgJ_XdVKM-MfDJm_neDtRgHM48q85ABRJ5U_&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=1GWxN5TB-WnIZ9DISiq6jw&oh=00_AfJemW84FegeIhyguV1WH81bYAXsc4p5-JPN-4L0Ui4BRw&oe=6822483E' },
+  { id: 14, title: 'ฟุตบอล พี่จักร คัพ', price: 1460, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495566734_997086152535853_3985706780743704030_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG2sdi0kNxKQQjYBNvs2-M_udMz9bix63K50zP1uLHrclaFsvl7fuO5aGVDCbI13xragabSEWrJNquug2_P3aGW&_nc_ohc=Kye6UsbzgasQ7kNvwE5iOQ7&_nc_oc=AdkKWkjdinPCBAbAfuDTYBiuAhv4kK9hlBNpDzKZheHFJ0lKtqn63C2mip7HHxEfCldHWJkOBhcuVmXf4LnZAFyR&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=3wRvDnr7ZrAyAFepTNjFeA&oh=00_AfKBeSh4cxgmGJwaZuVP08rSoeuLAtHWJYam2K1-XTU9FA&oe=6822610F' },
+  { id: 15, title: 'ฟุตบอล พี่จักร คัพ', price: 1800, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495539750_997086285869173_4722379986703955489_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGbAI0BuhJkWdJNrRGN1GEZw5bT7Joq16rDltPsmirXqsQInMMeklWQgH0MZEkHOUWPPaRMcXxM4ocs6vBpQBl4&_nc_ohc=5lc2_pUZ8rgQ7kNvwEWWG6w&_nc_oc=AdkN3ElhcwIu_LZMU1l8uvLUPaK-Anta5ZFlAfLCYtJNGaz1ZnzCbrUG1oFBeOjdJH8WqifS9K0i1WOEaVyUvHzj&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=HBMvO5kVQyfA2OaHapHL5A&oh=00_AfIT8vLPRyESBvkVwrIEQa39R9cmnzFaHKiE_Bpv-ejpfw&oe=68224D4D' },
+  { id: 16, title: 'ฟุตบอล พี่จักร คัพ', price: 9150, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495563793_997086352535833_2868305659861456983_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHkfDxTZhzzTgqRydSVS6pLw2wDU-Hu5gfDbANT4e7mB03IlM0yGOp1tzdNhaF3uHJ4xGJ8s8fTR4vByq6la2uL&_nc_ohc=XB48ZLU55jAQ7kNvwEhZF2W&_nc_oc=Adlfcx2zSpCMoFFZD-XsFqAnjAMWawtty7xegNqVnp1PqVRwKIp4w9lQdx7c1MV3FdjxYo6rBrnFmIjEFeq4iHXh&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=SxwSHfRh8lK8CvJGYEjGlA&oh=00_AfLlhYm4mdyOXmZbNQuXHXGIkcY6MEHsmh9IoS65Qz4VGg&oe=68227D55' },
+  { id: 17, title: 'ฟุตบอล พี่จักร คัพ', price: 1550, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495563016_997086369202498_1022094025540218608_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeErzurxyUB5ZYfklbIGoBTte26joSRwrO57bqOhJHCs7k-wlpqWu0Fievlc2nleFvL4gm6rxU9Y1T1YEP1J8XKR&_nc_ohc=Pc2xPx31CUIQ7kNvwGvFOI4&_nc_oc=AdklmyoXl0YGclu6OG_rcNJGtO_wk0SVRtQmfwkt_w0DgDj4OBGkbEmIJ1EK33PFamfVpulaN3C6prSHVKQlHTA3&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=2TG2UMsk9Uh5v-ppcW2XNA&oh=00_AfL53_hdUv2bnltIv0Zg46vZlFxC7koP_joXMiBn2fPmiw&oe=6822548A' },
+  { id: 18, title: 'ฟุตบอล พี่จักร คัพ', price: 2700, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495579646_997086522535816_7132121384368340734_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeErA5xb1JSkbAtBJgRyGVNa4vaGcNrHFC_i9oZw2scULxRj1KVIVQVrph_Sg_BurRG7MMV7yqSXkGwbWVtJuzoJ&_nc_ohc=-RVlxkFhVVEQ7kNvwGCiSYu&_nc_oc=AdmFz2RC3KwaugItN5GFY9lkkSHZhOwMpHVZ7pDwHIOVcvMQe3aEPfeGZCRAFY5-sjNRgmSE8r_E6KcY9B9ofHf7&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=rNqvIT42XtEgCQcksbDQ4g&oh=00_AfIbKeErTGBoaMK6yI3WpuphQMMhhInzrkmvOd5IeZS2mA&oe=682255A4' },
+  { id: 19, title: 'ฟุตบอล พี่จักร คัพ', price: 7695, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494580630_997086745869127_1574286272974417713_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGXnUjaOyJ5obvt93rZcz7wS-CKDkupdUBL4IoOS6l1QEK0zzhf5kFEkMTLHhTbjpfAancf0AOunvyJsekAXaiU&_nc_ohc=w87fLL78zS0Q7kNvwHSuTUd&_nc_oc=AdkveFLBNIiWFto_Lg42N1WOyWTpfsgBo-GhxtEqPzICnPlAR1UAzMvN5ohWbnyZJPu7te681N1n8z04eGI0Q0DB&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=jSDet-UwkQkiUrmVztbsOg&oh=00_AfKfk8FTEYKh-y4GS90wArOgx5cAd2vBPL1gbQRESDjEsQ&oe=682275D1' },
+  { id: 20, title: 'ฟุตบอล พี่จักร คัพ', price: 5395, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494593019_997086762535792_367560347956703211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdmCuHrEWgjJIO1yv_vWe52J5bnVhtNxjYnludWG03GHU_OdFCwXJTS9Or-6VutKXQY2uF00LaN_IRGwcz8iBL&_nc_ohc=VBPDGiErIMQQ7kNvwEG6pyf&_nc_oc=AdmNV3MJEY-F_Z72rlalBWGUAGCpml1uyo0WM9tDeSJU2esdPcQ4DAVQ7aQ-cMZeaC-x9zGqtOuJ7qxVQ9zGlVf9&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=2dFjNPaU9a5m4Kn6UjE9qg&oh=00_AfLynlW7-q-aRBTzU2eA-SYtSKDRSTxye6WPv3dFYk8JDw&oe=68224945' },
+  { id: 21, title: 'ฟุตบอล พี่จักร คัพ', price: 9115, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494794071_997086835869118_5148939034566515707_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFVNz6b_GzIc3JKNo9KuTslx6wMAmDtPWPHrAwCYO09Y8Uy3Y3iANP7e8YghBW9yVM2idtctVhQDHUSOguIXwNL&_nc_ohc=zXM4BZmohRUQ7kNvwGM43Ol&_nc_oc=AdlX3rZCtMb71lLrFvjNYJJTQVjxJ6b7vM9QuCNme5kERY17lsdgCW4CdbzPUt84_TK0feIRKbtiCfdbY1MkUqOc&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=3C0maUtVndpiw4i_6r7Jgw&oh=00_AfL8lANIeT8E4m7JE3-OAuUEajVOdCFZzL63mAbyEgcp2w&oe=682262DB' },
+  { id: 22, title: 'ฟุตบอล พี่จักร คัพ', price: 9655, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494789349_997086859202449_2175877810047665813_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE7iEivITY0MaubzQKDaMhoyCWOQLzAecrIJY5AvMB5yt-S4nGCkTvSgc_-tDclysgcuijhZhxizSaMpoxzOFBS&_nc_ohc=ox6HHnhtSWsQ7kNvwEOxFzD&_nc_oc=Adl0tmiZLovYd2rsaEcmS0GBwT-u4wfmBxlRgoqOuElpDUUfrEUCpO-OZcJdAAzRESgsib3u8o9C4wwXnm_sTpY3&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=5-DJfQ-n7H8sdxGZBNncGQ&oh=00_AfIjWhdyeqcYJv3tdLMV9eY8DyBx8FD_uAE5dJs5SK_bEw&oe=682278D6' },
+  { id: 23, title: 'ฟุตบอล พี่จักร คัพ', price: 9455, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494892121_997086982535770_5338465815459213808_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH-HoXToyRqfPByp9GsbIW6dIveD7o3-oJ0i94Pujf6ghrZrLqzIdkJAiB14TUbLRdV8amGitFeRG7HmKMwAgLM&_nc_ohc=FX_2nfUoePsQ7kNvwG-gc-m&_nc_oc=AdnM55bWS7SGlsVSEjkHyb195I86bVh94MhpevEy-XBsuyZYEwUU8hhWnicCpd_eUpN7140vLd7XWpsy_kWfKVKo&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=IXk1L0jETsIVuIWT1CZ8Mg&oh=00_AfKkjD4aXx7I6ymfr_-fgT27ImxAbmwUxawu7JBIzVt30Q&oe=68225E04' },
+  { id: 24, title: 'ฟุตบอล พี่จักร คัพ', price: 9125, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494805861_997085052535963_4648139685322767211_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFpC1gmdEtafBP7GwrxEBXs9lQTYtlhVLv2VBNi2WFUu-iM5pR8wGKPhG0M4tSxOtdCf3U1uvlc8iqyNo2eNXXz&_nc_ohc=PAgLsOnlapwQ7kNvwEqSdgU&_nc_oc=AdntFeqYyRPDj0Ker0R1hISIZy4PVKj9ZSqur3qYQnwiQL1pMSyOPIpzHyQ8CDUzMnZvUYI93F04fJhw82SED3B5&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=vgC3CtLM7xh-RK-sIqEVJw&oh=00_AfKTES8f0Cpdm7IyLeulS27JioKRZy3ghKLhmvU_9JLw5w&oe=6822718D' },
+  { id: 25, title: 'ฟุตบอล พี่จักร คัพ', price: 9465, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494718722_997085165869285_3278855126707316417_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE7QsnhuK8yqPOpvP45YNTNRFVqjsE1nTdEVWqOwTWdN3oE_6gYbhjEQwWmMnFsfrqlYhEUJNn-VO8RoFbaASKF&_nc_ohc=TM880jQ6VlMQ7kNvwFyhI4o&_nc_oc=AdmYFriSReQSre_9tCfhW6YJLi-DHbb5cQZ1NDWsLV_xAInnHFWoJ-xyl-IWoMvAXUTk_F0n58LWHPm69_WU_Uz7&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=y3JMvBuGqFUiX56sFQcP8Q&oh=00_AfJ0n40jtuQfp99HE-0uF2XWwKSESfv1VlhJ3QEgXZMeEQ&oe=682270E9' },
+  { id: 26, title: 'ฟุตบอล พี่จักร คัพ', price: 9965, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494757083_997127132531755_7306256463090956743_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGqbMdEBOaWvWoh8hnBEHERU2ivezYzuaVTaK97NjO5pfTH-cdCm3ctiiT3XdfCUyCvPes0tPfpEVzUvlYx8AaA&_nc_ohc=vNmNTEGwj4UQ7kNvwGYBogl&_nc_oc=AdnQGJtGqfgWvRv4y7vNkH-AXsut3xtOnJ4E3gY0IMmgihSP8m91cHVqwZYWoeACuhdTRdagEASwNgKlw3LWqXta&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=tSgcR7CuzNlazMpvxkm11A&oh=00_AfIDNFd2QV77EO6zeULH-m10RBKxg5depFjIgmzKTFK3sg&oe=682246E2' },
+  { id: 27, title: 'ฟุตบอล พี่จักร คัพ', price: 9755, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495227040_997127262531742_3946952837105968703_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGdAM2DFB_PLii2b7SONAqDlO0cb61qjZ6U7RxvrWqNnr7yP0GXhAUrrVRHPsk8v-5ziPsM7qpPUdGrJ2jAbj7D&_nc_ohc=dlToyZboRSAQ7kNvwEVeL6X&_nc_oc=AdnAX4gJtYqab7JlwSoYNgNhAWP89qN8h2Oh_8ympKd_M2rrlB0v9PC3iKsjaZkRxZvYQx6i_NLIk4ulpGMV0OvL&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=uVI3ACCdPFH8CTbakKNfqA&oh=00_AfIfBFOfkNvZvkBOifTZ-rqhTUEY1hS4PVIeFHQLSGIwKQ&oe=682278C1' },
+  { id: 28, title: 'ฟุตบอล พี่จักร คัพ', price: 9135, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495271536_997127265865075_8078269633348769098_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHmTu0N1T_e_qviraSSimyKiLpQjNv-0UmIulCM2_7RSUsLA6tm73AGd8qvU20ZQ7mSerYteDIHgy8tBB8y3eGW&_nc_ohc=A81S51uH1uUQ7kNvwEMTTtU&_nc_oc=AdmDwzjOuunxkvrEw6tSZc3p9dFt4_zCaqbLvJJzzTHI4wT8gA3mPyJ0XYwggrkY84RX2rD9QoCJ4Zy1KITRKVwn&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=t2yNl5n5nPwidIySGQFsCw&oh=00_AfL1h4i89OXfBVllOYSR1FWrjjUPp6tLYdNYDtHfAf0Llg&oe=68225105' },
+  { id: 29, title: 'ฟุตบอล พี่จักร คัพ', price: 9125, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495458044_997127372531731_3868418467864324769_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFFVJ3xPRNCH-1gxNllCQQG3wxZB2WdRTPfDFkHZZ1FM7pM5AHsfWaVucfnoGsTdwReEYQ2P7xDkmGoVEoby12L&_nc_ohc=mzzZQsRCQ1QQ7kNvwGL38-V&_nc_oc=AdnnJdf5n-We2DBik1BvgQ1iK-YVittJcc1QXW9JutE7gHNCBMSwfqhLUJ5r6Ew1ooSWNhO1ouSZfXePbkwHcQz4&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=a_Uv8wXYE_hfxwHMSnYfKw&oh=00_AfJeMVEWbo5QN209XKdUaoXQ8eimzOzreJU4kcHp_-3JaA&oe=6822681E' },
+  { id: 30, title: 'ฟุตบอล พี่จักร คัพ', price: 9135, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495574152_997127375865064_7275825954352879013_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGqejhU8JDO5gYdZ_ibvRRWJ9UrevcZwi8n1St69xnCL-QdVpRgR4CMCBe9Hx59dFkcGjCXZHsHGznJm6HOKVoj&_nc_ohc=6ZVACrErvBMQ7kNvwGofLn6&_nc_oc=AdmQJJahpZKgUtBgT6gs-zDaJfbG2IDT3YMj6GgZnPYUiGc1_4plrh4PKNFbALK3z1smqnOZmmX-tLfZR9nfwOOK&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=XGz91X9iMphiAmP7wjQ51g&oh=00_AfL1ZE-9JT-L4LPVgstg-IOPy0VXRehJs2So-4QBU8gYOw&oe=68227161' },
+  { id: 31, title: 'ฟุตบอล พี่จักร คัพ', price: 9145, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495089741_997127462531722_5907997893146023103_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEdTPo0GcFOyUJCsBqwqgBxAFO7AzfHIcYAU7sDN8chxmgMkXIOh7hHKArJj7K4xAhqnydHZGTSgZCXBJMmlWxb&_nc_ohc=AyLcdUJQ6h4Q7kNvwG2PE9T&_nc_oc=AdlCkBZdGWZdu-FZro7wCp_Pu3k3_p0-BRmlK4LRgOk265CGQJ0RH6k3QhyqfLZ6adkeDJLnxNOxPDt_um9eTAdb&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=LYRVJsoXCiK56FrfVuINuQ&oh=00_AfI43qeZ2pm2YsvQqPW7NsldkQyApW6ad_SVoh5dYfEWLg&oe=68225449' },
+  { id: 32, title: 'ฟุตบอล พี่จักร คัพ', price: 9155, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494807328_997127509198384_8919678307031386095_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEORmoN736W-QT5LlM5MAwzknfmjhZDV6aSd-aOFkNXpoRVmdfzQ9QMkWdkUj2ljisRcFD4wE9h72tLqQYEjSX4&_nc_ohc=CwEcEY7DvsEQ7kNvwGurb8a&_nc_oc=Adn7Hsd9llFFHO3K9L9KRWHFhc25k51z7_Xj8uWMl22korupbem6t3_NjXuYCZmpmABct7FiX9JsCQzVJNgFfDgx&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=CV6IWt2K7dP5PzgolStosg&oh=00_AfKuTn40UgKm9xdPuWtT9AjsqDzsDSOuPo3I-jt1sIKjzA&oe=68225835' },
+  { id: 33, title: 'ฟุตบอล พี่จักร คัพ', price: 9165, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495574200_997127505865051_8461743594159616215_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFiuZCEX5ngIdbwVrYMsFjQJHjcy98kSpYkeNzL3yRKlmPex3HoT5DoPgGKwOCVJZUSzP-4KRcMLLFq6VE0cp9v&_nc_ohc=4zVS4GQddo0Q7kNvwF1DvPn&_nc_oc=AdmVgLBd0fqu8Ue8n6HbqAx6UveJ0zKS59CEkxPdyVQ03VsoyP8ZjdLhPiocyVz3eEaMborkEdrMQYDx0BDLI0Fp&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=cD9tRMXsPF32Cl97KMa-eg&oh=00_AfLcC5R8NMejl8XVO3pV0dIhquy1Gg94Bw4a_dVt-0Gecw&oe=68225E4E' },
+  { id: 34, title: 'ฟุตบอล พี่จักร คัพ', price: 9175, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494792214_997127625865039_1974705461543200627_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHJCGSfbx0dJrLnYhHQis4BNRfJkBBQIV81F8mQEFAhX9F3jw786dVjIcKGnpn6bodPHWKMvH8KcJg3z1DX98XI&_nc_ohc=wlR6oAaY9gsQ7kNvwFtrwhp&_nc_oc=AdmLCL6rf00_y25PElY5qJWvRymPn62Hn9lmpVbrwJQMIlmBuYIRr8ULeH75ZviePcBsmMgBsldJlE4s1ze0fcMj&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=jZyz0YJ9MJ68uKerp-UeDA&oh=00_AfKjIecouY7qSgHITjOTNfyf-Y_eKCiQjYXqBQJh1cEPyg&oe=68226D09' },
+  { id: 35, title: 'ฟุตบอล พี่จักร คัพ', price: 9185, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494796369_997145659196569_7346176351980134278_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGRcdDqOxuHk6wtOlS6FjGT0Blfcfoi3arQGV9x-iLdqlxT4hHVYgfaViOA25bo39xLGiMP9dP_a6DGLYR4ZONe&_nc_ohc=1RYboKY85xwQ7kNvwHW1IaT&_nc_oc=AdnaE11zsnluCFGNYbc1FMu1cMUtqzVVFCCvR6hEN6PWSOS8ultn1GXXKh7hbVZqmoGlXTsYT_c30oFzCwwAfoWT&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=ZRh24ZJdj8TWBHU_jda2qQ&oh=00_AfI5UyTejK8S4MKvzX75dkdSWUyisJ0yaiZ-GcLU9OR1bw&oe=682273E9' },
+  { id: 36, title: 'ฟุตบอล พี่จักร คัพ', price: 9195, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495483352_997145665863235_15475865420277668_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFMCLIFLf9MTIxRLkD-SXPpWR5N4wEd6DVZHk3jAR3oNe_OZqa8GR4BrVQU-iGsel6FMgygMxnPhcgfNQrmpaMF&_nc_ohc=-4NcruD9uyEQ7kNvwFt0hKV&_nc_oc=AdlCvsS6cyEkNBwXfeHJnfMTpHuwImip0SCXxCwg3CIK6ozT1Na6mrM5OCy8wbcS28R0f8Z791L5eU66ftIYzIfx&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=JrJzcSwHYbc4ak6NOJ4a7A&oh=00_AfIAKrLc45qpVpzCRDYv6FxHtiYHKdTp4uLJauKdR3YVGg&oe=68224AEF' },
+  { id: 37, title: 'ฟุตบอล พี่จักร คัพ', price: 9205, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494755286_997145662529902_9105976202028153826_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE2kFKPDISODrA9nFV0o3xleeKHG6YZWUR54ocbphlZRESugbZ7B61eMJiVONJU5N_x9-6LFtdMggmorSDiUeWw&_nc_ohc=R-GBW0WTPrgQ7kNvwGqw8DS&_nc_oc=AdmawdmOJpwBxqnDJYEQOcD9CT0QdtGO8AWQeFxE9HOcjyKQ8Jp8SYxvyR7KrJKlEq8MnTegOarql3cRdxITlJnR&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=85zzqAwx1lU_bEHTsLFZTw&oh=00_AfKvbdYf-0wpufp52SvZVBAEsHABg885DlB7Dsf9rstBGQ&oe=682263A3' },
+  { id: 38, title: 'ฟุตบอล พี่จักร คัพ', price: 9215, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494667303_997145785863223_7682407812034512406_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH_9ebmqa3lpAiqAzIYFX2iwp81bW0MtFTCnzVtbQy0VCnS1TAgbwTFt7RyIWHV2dEpg2niVuophOjkrrWAO6tq&_nc_ohc=lgW9wNIiuJIQ7kNvwFZykUO&_nc_oc=AdkPgdoQUeLQIBu_dvJC8gTkUU_Mx4cq19qNR-NIo1AZmskEpoEZG4sM18bpkv77VR1E5CKDW8rGi3Ti7wi8REgW&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=OBTqo2Si-c1Pbi-o-czPAg&oh=00_AfJ8PHfrF5c8MeN3sow1SbBE96OHfkkA4acotGQAPmTRwQ&oe=68224E30' },
+  { id: 39, title: 'ฟุตบอล พี่จักร คัพ', price: 9225, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495542495_997145865863215_2930339885251042063_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEeq30ltc085jStr_ga2bSM4-bPONcqQ_Hj5s841ypD8bZfPahzE0IYeyjtO-JNaLf1oFpQocLRF6Hl9Md_7Aee&_nc_ohc=-MZpvpBYwQoQ7kNvwGqPhU5&_nc_oc=Adkz6DVYVRoPt1TuEPgENoRyaHSHN406CPFbfLGZJ-Ijr0GVc6sfyN8MYF8FNQ-tV7Qq3Twjl6ReU2sIb9Xb9BUi&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=ObFJ3RtC1aLXDbrPlz8RuA&oh=00_AfJmuSZsBmjI1W-AXHG30KfOJEflx2RO58ThENmTPZIDYw&oe=68226519' },
+  { id: 40, title: 'ฟุตบอล พี่จักร คัพ', price: 9235, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494638529_997145895863212_3092095152053703225_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGqVmAZzgCEfbVqIRvH6BXBzpp2DHKX1KPOmnYMcpfUo1eVMokuimiGbThy14Q1YpHHQVOAdg0-74O32_qtrpW6&_nc_ohc=k7d6h71Th1gQ7kNvwE16TKs&_nc_oc=Adkss9aVWdIfOIIQ4rzeTMjMjsxU35RiGOIqyIDjX1paedV3foFt0HanxMm0TP54le8Qk-GvHlNg_sACsdpbJC5y&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=oz6KVvjCO25UySsy8YuUFg&oh=00_AfJ4LXYAociGTsjQ_bnJ_JpZQyJbyo7wjT2zYX-SIDS1gA&oe=68225ED7' },
+  { id: 41, title: 'ฟุตบอล พี่จักร คัพ', price: 9245, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495688939_997145889196546_3154408840376523940_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHuCqdM7i13khT66qdOejRq4sCY7bKTMaviwJjtspMxq7ZeNfokHmKCSxGBXHO8SaCBPQiF6yK3iYoXX_xxPo8L&_nc_ohc=ehV3p4God_EQ7kNvwGnmoaY&_nc_oc=AdlqQa9i_Z5IlXkmjocVgpDvYa2A9tU5FZ7V_C0CwMlLvXvP4cSgtfocpKoeKA4jrn5wjP5rlrzszmbRGCaV5-yQ&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=7zWTTuIYZw_CLDtBB8c4eQ&oh=00_AfKCYcfmNxJylFHmdHhmyJ8Q71uCMgLS0ww5T5iFKkJRMg&oe=68225E67' },
+  { id: 42, title: 'ฟุตบอล พี่จักร คัพ', price: 9255, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495844734_997146009196534_6139102682870864145_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHlDuHOmio9bAMdk0Y9HNhswt6ykFYQpqrC3rKQVhCmqrVWjoqQyOBMO6kO_gLzmg5yxhbiloJX8l1NSMxif55Q&_nc_ohc=5fSBGQBfQPcQ7kNvwExPiM-&_nc_oc=Adnuf2UhimuC9op2TB9hLXXfryKfZZjUGKFMNj1dZHUu571JT3VI6sNs60YXvRwrEgnb3AhcliuCMSMU-H71mZB0&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=6S4KACq3z3OwhlsovbMyQw&oh=00_AfL_OBfdujUvTz1mZLdd49tTXungIXoiwbg0V4TJ8kocCQ&oe=68225F51' },
+  { id: 43, title: 'ฟุตบอล พี่จักร คัพ', price: 9265, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495119858_997146232529845_3952531759988236518_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGHQYEMoxXgl88jcCiEo_eHcAM7UsQnWB1wAztSxCdYHVmk1H0TKETlKdQG_dJ2NMSGmUGKQE_bYkwHVI4wivRR&_nc_ohc=10evv-R70rgQ7kNvwE6Ivoj&_nc_oc=AdkBWBTs3-Uxfj-E-7ARN3eYIm8h9Oi2ujLw6GoCCJiRISJqXHItnvFBTTSvJRemIBuOGHbROTXB6AfuusdcpmhK&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=d20GZV3CZhk0QVTQSCxiLw&oh=00_AfLFCCThUnSRADtEh5Rhyb-ebSNnzqrXSSpcUIZjs1qK4Q&oe=6822552B' },
+  { id: 44, title: 'ฟุตบอล พี่จักร คัพ', price: 9275, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495269252_997146249196510_8344021329876221751_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH4YkRXOo6eZVBGV4BIITfqm0XdMFqumb6bRd0wWq6ZvnzjvAKl5ZCzoB1z4kdhn-egXV2lpf8D7EunrhpVPz0z&_nc_ohc=sw1kvpiScYkQ7kNvwENiq_y&_nc_oc=AdlHZE4Urdwgeyg4k3i-REVGJhKWkWVbQ3ictF6UEdNlotZpLyc7HCA9_AhZVb6Kh4-sTWGd5yW6eQ4vkKvtgzDl&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=qURvW21sRzVDxwdOHQuJ_g&oh=00_AfJTkukWb-JZpFDqCy1QDQRKF0gAjkjpbb68y_XiLYyWtw&oe=6822652D' },
+  { id: 45, title: 'ฟุตบอล พี่จักร คัพ', price: 9285, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494766409_997146355863166_1408711281332169089_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHR7GvM3PTcN5oljZ6SDxgshAzIsDzTW2yEDMiwPNNbbCw81r29aUnInm4M-Wo2y98SeuZULGa3q-fxnWJzxidt&_nc_ohc=tLcDNgRGis0Q7kNvwGcz6Ch&_nc_oc=AdnXGp_488WoMNNMs-ufuDseW_qdneSjXRW4liHnxU19TKiCgUdtb3kpSF-P-4Tp3eABeqr7c2ITxnfYVQQK3EBa&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=BWIPVQ0xLv5BP28vl8xSWQ&oh=00_AfK18R-aetdmiLpbbW2VbWM6h7FdwLYPb1cgNf_2870jnA&oe=68226D13' },
+  { id: 46, title: 'ฟุตบอล พี่จักร คัพ', price: 9295, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495577588_997146459196489_1116233843598942237_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEljgQEcslnrw23bkykPxea_cXRMH_U5dr9xdEwf9Tl2o8VosCSUVZPWaUr8lHg6rVc2J9LdEjUP0WUVcG_FtGv&_nc_ohc=TzwfkQz6kVsQ7kNvwFo2rEj&_nc_oc=AdmAWDM6UK99amvd3ZVIHV8wZ8vyVy3XDLZok3NqwXi61emKb7eyH8LP6vRl9o-49Q08TlqLwXFjICEoIQAvbSG1&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=IigD6xfXJojM6M_97KTXYA&oh=00_AfKDUwOczsX0gOlWpa3JPA5aXGSuZ-LvxmWyS1OLiwsrTQ&oe=682277F3' },
+  { id: 47, title: 'ฟุตบอล พี่จักร คัพ', price: 9305, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495490842_997146579196477_7101306806889299228_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHiDd_dQkQ_s4F537dquH4xmI8M0DbFb06YjwzQNsVvToDSj9e_XlW6krxJo_6SVEZQbourDezRm1My0gpkyiiP&_nc_ohc=k4eJb0A8R4YQ7kNvwEbDK9T&_nc_oc=AdmWfb30LxdudJgo8DlWs1x-sW94pMQBXnCNyjpQS60GLxvyCMaiA_eLNbsjEJKtYmG9ru1glOo_Gr0YiPSOyCiJ&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=HXUhNaYs7_aOIgdl-kXmrw&oh=00_AfIBT5sBhwR_EMbWFuECvCnUrbxsdA4gONIfxZidOT9rSA&oe=682263EF' },
+  { id: 48, title: 'ฟุตบอล พี่จักร คัพ', price: 9315, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495220886_997146702529798_6125274569702809741_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHVGxTse2tjO4Y6QdH5B3d4IdhXO_CXUKMh2Fc78JdQo5y7KYH4kqKIXOpJBa-ImQw__bKGuvKNu6Pc7ztGeLu-&_nc_ohc=Vf0ULP_eNnEQ7kNvwHjtIQb&_nc_oc=AdmxrmHM4he6gc83Hp-94rhFuzDpa919TrzXlMW_Ix8Yl52DWvudV7ieLoOCRztl-n4j2qqAMN9Su-HO76srLQLi&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=W6WhBrU3dXMYTgjjXpLBGg&oh=00_AfJ0_GIaqfm4tNYGZWhRcZPzL-zlWAcqRxTutQWW9nwipA&oe=682278D4' },
+  { id: 49, title: 'ฟุตบอล พี่จักร คัพ', price: 9325, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495509867_997146829196452_803737946247072085_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFIg6lgVklsEvsCSan3tfpb9Wee2HwF1Lb1Z57YfAXUtilnmHSsCAc4ve0qgoDZhVwjwiaCHTKmqfeO71zagrK_&_nc_ohc=VV_ME2PmvRAQ7kNvwH1tVu_&_nc_oc=Adk0X5RIBDFzMPM_53W7yvHDA5O9qA0oxlhE7aygUVvfoN0E4WmHNvvI9eC2Yvzy8SFd6fYIvjhiVRRyRolFPihi&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=-BvrXHuxeMN-jjhdiuqAIg&oh=00_AfIw2sjwwYOt1dn0jS7ALVJvt2GWZunuWUU__4UbDFszvg&oe=68224B37' },
+  { id: 50, title: 'ฟุตบอล พี่จักร คัพ', price: 9335, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495569350_997146959196439_4959685724662197559_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFUt9BfFLeXYGHQimG2zUOROEyB3TYMIiA4TIHdNgwiIA4MrOrEFGYfpZXTODtHKN3jQLEnbT4Eg7-feo6GwOpj&_nc_ohc=6HQNd3CvWjcQ7kNvwGeU17h&_nc_oc=AdnWvS5k6HhPLVi7qUsYadDW17oMKF6MmbMRFV1RXr6qilNCMO7eQAUHK38dB0nBwfHbX0dcXt9gEUfeELC6Qblh&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=AiFQSfr6RmrNld1CfDNKJw&oh=00_AfKvL0VZCOAmpwMurTveqWsWsiYD5SXm2sbG_FuJsIhdyA&oe=68227657' },
+  { id: 51, title: 'ฟุตบอล พี่จักร คัพ', price: 9345, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495240897_997147065863095_9043122105498365299_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFGna3WpM740etK98Wk_zWG35Zs-WBC7Jbflmz5YELslukUhSdTvPB56sgnlJDo3w7eZloYHXcpBfycatu1SuIG&_nc_ohc=AvcatJfSqGkQ7kNvwGcPPbp&_nc_oc=Adl6u8St8YuDR72AtEN5CqCROq2sENyy_vUY7lhVlEie8Gqghl4O2NX_5KJCTdY-v8pa-6uicN6Dm1k6XWLAl0AT&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=3IJJ0jRz3fkAKIxilFqUDQ&oh=00_AfJ0KDmTrowuZ5pBQSwkFyFpnuSRBAXKHjT11BRfK5jhbA&oe=68224DEB' },
+  { id: 52, title: 'ฟุตบอล พี่จักร คัพ', price: 9355, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495575656_997147225863079_2353889566531654335_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE96ZGk3n56VtP3-1FYZC9mEG_K3-EAu3UQb8rf4QC7dea95zcUO4hcCXzGRnqcaqPuWAXLNi6FFUyZ_9nD1wwL&_nc_ohc=WJdVB7-i9f4Q7kNvwH4dX51&_nc_oc=Adlir56FZNaWTsoSNpJ3RNfuoEoi7TnfHez2BAe3I8elFu6HOFEBZxJNZ2BP5PF2LpplRtGD8GOi_FygH3Moj1wN&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=xN1XWpj3_R43nJhs2IvHKw&oh=00_AfIXM-sniBt98K1BEcEKczCUGNty9Koy3pXjVVKrmw7CdA&oe=68225216' },
+  { id: 53, title: 'ฟุตบอล พี่จักร คัพ', price: 9365, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494769285_997147319196403_363205092010458517_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFi4UJVjqnqSP6tDgQ5TLyjKq8aqHChsMYqrxqocKGwxqH7tcab3xo-2mYJxTmvvTfyc51or24I0Tn_AzdG7iO2&_nc_ohc=ZqVOCSYOHuoQ7kNvwEcEE0F&_nc_oc=AdmE5gyLZQbd1Mk-alowdPHgUcHvatS540ThGYWSsVYFIgbk512cvRMPVUJl6L5E91eR6c85N7Rcl-pMbo_8u-bb&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=6rS1MxP89eC8VNhaWA_CcA&oh=00_AfImFRC4Mza9PRmYI4VG6Fnd5ArhTy8OL2XztjwjMlCAOQ&oe=68226573' },
+  { id: 54, title: 'ฟุตบอล พี่จักร คัพ', price: 9375, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495570735_997165529194582_4274896442752761081_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH9gl4aUXFSzANsafIzKZyJa_FpwO9R9gtr8WnA71H2CyRJGiy-vjuJK3UwfYkfx0s2sommuh1ZRHDvCMySPGAf&_nc_ohc=aismAuqNWE0Q7kNvwHjH9z9&_nc_oc=AdmPd96dS-s1q-lseoWFw5oEXnKVlJkXBN8MiewVJv0H03ln55eejdUI8wuRSeIV_Fb76aLxkE5SP9Eu71SA9tw3&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=rcx34l7B6v7rAwgChni4hQ&oh=00_AfLFM7MMXGtu17b7rwFwYggPrbcbor9U97aVYkdPI6Lpbw&oe=68225901' },
+  { id: 55, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494733052_997165599194575_5826355132573409498_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEOxg2FiTUVNxTl2xm6ISFmmuYkwfw__9Ka5iTB_D__0pr323I8wnAtnIUsGXynUc8-HSJsRTeseHU91toYlb0k&_nc_ohc=xxDZoe6nqIcQ7kNvwGSKdjO&_nc_oc=AdlumIuEVXO1UnRY3DlypulF-yVQMIt8CAeLUv4kPDhQvokYDKDBM46X8WX1CYe2ElgRBAJiI3Lr-7BCKlxjBWE5&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=6bFHzmRZP-EWrS5F41NbAQ&oh=00_AfKygE97NBOFZGayxQIFKjuNfAT50UMwSkvEMwEuXzRlDw&oe=68225EAC' },
+  { id: 56, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494805890_997165659194569_8469359661597772881_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF0oo0yEkcWejL1IR2AcpoaKlqqezjz85YqWqp7OPPzlndKruopg0-CrrAQflN_SMcGlrvOxkswF01IhxUu1MpF&_nc_ohc=lmeGnQsPTiUQ7kNvwHwU434&_nc_oc=Adlcai2b5Tv7udhqXBrcJmgVsUsNwlJfWTkyP29q6pheS3Mkh5bX0ogojLLZwRqOKSl1pKGWa76kwV1bI_SPut_s&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=hUuQs_tNzjUA4aAIAuqWUg&oh=00_AfK6JbaT9VKdbQm0LG9zqa8BFYb7McVUmkFAgTYrYCAx3A&oe=68224E77' },
+  { id: 57, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494761348_997165709194564_3581506766526578722_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEkD5Uexkv08K-2-xU_3M3bqWOAECcFs0ypY4AQJwWzTEZuZO_tqRA9ylSNJGxAg_Xut2FbZAzktc_TXbK5pAXb&_nc_ohc=JBLjdDNOPTcQ7kNvwFqYy5a&_nc_oc=AdlnamqE8zpNYPbW6LVUZ03PWApGi-7Iq2qespCRPsEj6pByA-J2jor-yOWX6d3P7Vtq7T6i_Wmhphfo6hWaZ96G&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=xGm0F0YW09fp7M61zmctkA&oh=00_AfJWdlAgfDrEJwD1SrtdaTQSeCup2YahVdakeT-x-sOMQg&oe=68224C4E' },
+  { id: 58, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495572806_997165835861218_6505640513961428517_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGIxzNkP2lxaT9qJC9SZWJ1hJrWtvB52EqEmta28HnYSoHnD_3qIm2h3ywLbjQeAHC_GytNrjcrafLPDoTifvdX&_nc_ohc=iDRvqa6zGHsQ7kNvwFJlM3A&_nc_oc=Adlju-oYPVfN6ctgqs35wdC-afenhqPDQoMm6YLhdQm-WGUT4r3o37U4u4LFuMyNmzA1fgASNjKPKKayqdL1LYKR&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=kJ-Dd18mGNimD3waIpy7pw&oh=00_AfICylt12OMnWUureGj5MnvJOTtWUH02NA1Y-Z41Debd7w&oe=68227C9A' },
+  { id: 59, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494802291_997165859194549_4849059949108643785_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGVdGJ7pbHJevhGaRk0_CbImL9QO1is28KYv1A7WKzbwlj_rTQiQg3DB_JeOJm1XZ4-sl8gYbA6c6ZHLFB_axcb&_nc_ohc=pOcZvvqRa6EQ7kNvwEq_XWA&_nc_oc=AdlkVPwmXcQ2nnr2X7LEEt_s54TfmtUuB-J0P_CsvwDkwgUxbeTY8Wy3TYuMHLwZSmEcnulMCx57UJn98RsVzdi0&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=LYANG4sktZcNi16m5DrcRA&oh=00_AfIONki96K2mPFzb1d4LRDAQXidrF32YzdP9UYz04p_43g&oe=68225645' },
+  { id: 60, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495572493_997165965861205_8535448159740098528_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHFHUF3d5ZtHl2SVdWba2pIr7HiTzSw3kivseJPNLDeSIzHcl42ES1RWelJz5_bOvNQ-L74IIGORdEf_Vm_jakD&_nc_ohc=2L0LjsdM4SkQ7kNvwHFhd5K&_nc_oc=Adl11zqwcj6CHSNe9kQBA5kTqZWMWQGVr1c1NprKO3cI7d4gVUnUMopUkOtQKhfBFVIszJZX0lZ1bol5E2H8-cn9&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=xziV_B5x54ORt_3FPj4J_Q&oh=00_AfK_vXn3Z0UDf7jQp-CK41tvi3QgNw07QHFbGavxzXZ-1g&oe=68226201' },
+  { id: 61, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495259105_997166069194528_6191342210412803340_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF2aIOJWvJeAtEIZz9PaUFB_z_3_6uau4n_P_f_q5q7idBc630famyPOHtdko5RiD8vOFEQZc9PlMo5B99dk-c7&_nc_ohc=N7gp-d1CvPMQ7kNvwF1IcxU&_nc_oc=Adk3UCBCoMrx-F6xo218kpxlei5j23JBf4jXsz5l_96w15-uQcoess22ys2NLPVewYAIZcU4ZGbzO8s2APrw3sRh&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=DkEhFEEmElnKS8WsZtJDaA&oh=00_AfJpxoBRbUJ3JOEINmkfoQ01_S-1KXzNDAhusR7vlvTbKg&oe=68227C48' },
+  { id: 62, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494769344_997166159194519_7439781537616225457_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGXLtSgoXqaoasuXXLmmZDi2SnrJ2PbuMHZKesnY9u4wZnoR0x_cCB2S7yUiZs74IxxqgwKAKLmIAf_bb437ZQE&_nc_ohc=FtUWoKoXkwEQ7kNvwHKVO6e&_nc_oc=AdmklVUyzNb26x4X-JhPRuhsvfWsSI83B0sH1qfMG5Nt1AmUKd5gf2L7_-bnH1lGljHiyqBQ5HbEzHxVlns69ZFr&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=k8mGW4JzTy3n0GQqZJkvew&oh=00_AfKv4dc0f4kegOYk5ouKP0zvn74pccK-4x60xTfYX84fmA&oe=68225CA7' },
+  { id: 63, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/495437747_997166202527848_7110256389279452790_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHGmMOOscIyUH2pzyIPKmb3cSw6D6VhEdBxLDoPpWER0BVbml2bjT-wcb814BVkutLgSE_gjGwUZ5e1AC1yAgFw&_nc_ohc=smmMtSSssYsQ7kNvwFndgLd&_nc_oc=AdkIzyR_9tkI68ZOr021WBV-_lAVGOwCw7vwKUswp9AQAfGcteGVl94fR48Ip3dexS0leLJu4ooSs7Myn5jw9Cqy&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=lReUmSX5zc_St0UurVos2w&oh=00_AfLo3oTD5K1DaLyoUiVe5eGqdYT-pudF6MmvUxZ_dQO1kg&oe=68227CBC' },
+  { id: 64, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494731253_997166229194512_6733906992965765648_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHiefB1UN8Hez0b5AwySYnuE5rSzxZnsYYTmtLPFmexhv3wWT7CdC_kPNHgsjQ0B1NVBYVZNLuqy9oxzrwOFs1H&_nc_ohc=oPWKN7YUEdoQ7kNvwGFsNsi&_nc_oc=Adm6fuZf7AmuC5cD3yJjzN958mjuM_1xJIQcr6upd-cNSVb0N_WKqSy6xNB185JRxvDUjeuod8ZHlZXBbzLM14OJ&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=Thh4k4R3NO6KSB1ImIXvBA&oh=00_AfLX_TBc1WPrHiMxkrKPVgqWkmdr6eA2IacrZvU9jOrZHA&oe=68227D0B' },
+  { id: 65, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494558449_997166499194485_4369033085792452487_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEkVLIzn3IpMQb4iNX1TcYh24mxnWKDO27bibGdYoM7buU9y7Wk9g-c2fMasx-igT3GpMccjH7w4fLYSK-unQiv&_nc_ohc=wWlx7PCGgzMQ7kNvwGJV1du&_nc_oc=AdkFwGrOFzCrYuAJ7916TVDpzItLitdXnJdOwsLIzmwWstYaGBPj-vWGFkQu0AOGrkkU9yNtqTYHhNHoXA41J5qT&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=7g5-M8WUXvZ45VkiyOCb9Q&oh=00_AfI1Dvr7GTTK6LTWDhzU6bDJGsBDVgIJ_ELLCcZ2n9o9Xw&oe=68227D7C' },
+  { id: 66, title: 'ฟุตบอล พี่จักร คัพ', price: 9385, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494746829_997166592527809_4813782163911276532_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHao4Goeb2sSdcyOjdHrj-vLTZpCNo8jd8tNmkI2jyN39zxVdqxhaLscGQX0dguYrqaIE3jBH9kdBgSQ77HvWuO&_nc_ohc=yVlyLyJLOgwQ7kNvwEpjZEK&_nc_oc=AdkaVz-A9Z24_d6SgPTF7g48Wgh4GPeasuFt11_X0AXI9M3GPLiBHZMEUYRzmMj8axN4OjDqL8xpANEO_zUV89XH&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=mWtH-hiKbMZvm-JeB11bjw&oh=00_AfJMwsv7ovLh1GD-72CsIl0G6-be87r8qGb_EXit7OaAfQ&oe=682250A2' },
+  { id: 56, title: 'ฟุตบอล พี่จักร คัพ', price: 1415, url: 'https://scontent.fhdy3-1.fna.fbcdn.net/v/t39.30808-6/494752352_997166605861141_193506279847190127_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHKqxU3WjxHOJ7ll8RIAoPzTWkDNX_Bd6JNaQM1f8F3om8ug1EQK0wpIvBOP3vCUkUJh9adcPYnQXCNSt9WqOmA&_nc_ohc=cbspRZ9fh78Q7kNvwHlhH2B&_nc_oc=Adko-bbqIp5svNN_H8-ib6XXx6ddft83F1YpzKB66JWP8JhgS2O9tmwsKNmbdT9AR797JHxYQcyvDxJSngtDlv3W&_nc_zt=23&_nc_ht=scontent.fhdy3-1.fna&_nc_gid=RDmviY3oHsnvKv9aaUQAeA&oh=00_AfJzp55sHGMSFmXlR709jxIc5FOY0_Q0tFt5l94QSJLOfg&oe=68224EAD' }
+  
+];
+
+const gallery = document.getElementById('gallery');
+const cartItems = document.getElementById('cart-items');
+let cart = [];
+
+function renderImages(filter = '') {
+  gallery.innerHTML = '';
+  const filtered = images.filter(img => img.title.includes(filter));
+  filtered.forEach(img => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="${img.url}" alt="${img.title}">
+      <h3>${img.title}</h3>
+      <p>รหัสรูปภาพ ${img.price} ID</p>
+      <button onclick="addToCart(${img.id})">เพิ่มลงในรายการ</button>
+    `;
+    gallery.appendChild(card);
+  });
+}
+
+function addToCart(id) {
+  const item = images.find(img => img.id === id);
+  cart.push(item);
+  updateCart();
+  alert(`เพิ่ม "${item.title}" ลงในตะกร้าแล้ว`);
+}
+
+function updateCart() {
+  if (cart.length === 0) {
+    cartItems.innerHTML = 'ยังไม่มีสินค้า';
+    return;
+  }
+  let html = '';
+  let total = 0;
+  cart.forEach((item, i) => {
+    html += `<div>${i + 1}. ${item.title} - ${item.price} รหัส</div>`;
+    total += item.price;
+  });
+  html += `<hr><strong>รหัส: ${total} ID</strong>`;
+  cartItems.innerHTML = html;
+}
+
+function checkout() {
+  if (cart.length === 0) return alert("คุณยังไม่เลือกรายการ");
+  alert("✅ ยืนยันการเลือก \nคุณสามารถดาวน์โหลดรูปภาพได้แล้ว");
+
+  // แสดงลิงก์ดาวน์โหลด
+  cart.forEach(item => {
+    const link = document.createElement('a');
+    link.href = item.url;
+    link.download = item.title + ".jpg";
+    link.textContent = `📥 ดาวน์โหลด ${item.title}`;
+    link.classList.add('download-btn');
+    link.style.display = 'block';
+    cartItems.appendChild(link);
+    
+  });
+
+  cart = [];
+}
+
+document.getElementById('search-input').addEventListener('input', (e) => {
+  const filter = e.target.value.trim();
+  renderImages(filter);
+});
+
+function uploadImage() {
+  const fileInput = document.getElementById('upload-file');
+  const title = document.getElementById('upload-title').value;
+  const price = parseInt(document.getElementById('upload-price').value);
+  const status = document.getElementById('upload-status');
+
+  if (!fileInput.files[0] || !title || isNaN(price)) {
+    alert("กรุณากรอกข้อมูลให้ครบ");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const newImg = {
+      id: images.length + 1,
+      title: title,
+      price: price,
+      url: e.target.result
+    };
+    images.push(newImg);
+    renderImages();
+    status.textContent = "✅ อัปโหลดสำเร็จ!";
+    fileInput.value = '';
+    document.getElementById('upload-title').value = '';
+    document.getElementById('upload-price').value = '';
+
+  };
+  reader.readAsDataURL(fileInput.files[0]);
+}
+
+
+renderImages();
+
+
+
+
+
+
+
+
+
+
+</script>
+<!-- Upload Slip -->
+<div style="text-align:center; margin: 20px;">
+    <h3>📤 อัปโหลดสลิปการโอนเงิน</h3>
+    <input type="file" id="slip-file">
+    <div id="slip-preview"></div>
+  </div>
+  
 </body>
 </html>
